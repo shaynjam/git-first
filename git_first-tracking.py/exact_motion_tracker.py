@@ -53,18 +53,17 @@ while True:
 
         frame2_copy = frame2.copy()
 
-        if len(contours) > 0:
-            for contour in contours:
-                if cv2.contourArea(contour) > 30:
-                    hull = cv2.convexHull(contour, clockwise=False, returnPoints=True)
+        for contour in contours:
+            if cv2.contourArea(contour) > 30:
+                hull = cv2.convexHull(contour, clockwise=False, returnPoints=True)
 
-                    cv2.drawContours(
-                        frame2_copy,
-                        [hull],
-                        contourIdx=-1,
-                        color=(255, 255, 255),
-                        thickness=2,
-                    )
+                cv2.drawContours(
+                    frame2_copy,
+                    [hull],
+                    contourIdx=-1,
+                    color=(255, 255, 255),
+                    thickness=2,
+                )
 
         display_frame = frame2_copy
 
